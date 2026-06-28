@@ -15,6 +15,17 @@ from engine import evaluate_floor
 from models import build_model
 
 
+def str2bool(value):
+    if isinstance(value, bool):
+        return value
+    value = value.lower()
+    if value in ("yes", "true", "t", "1", "y"):
+        return True
+    if value in ("no", "false", "f", "0", "n"):
+        return False
+    raise argparse.ArgumentTypeError("Boolean value expected.")
+
+
 def get_args_parser():
     parser = argparse.ArgumentParser('RoomFormer', add_help=False)
     parser.add_argument('--batch_size', default=10, type=int)
@@ -83,9 +94,9 @@ def get_args_parser():
                         help='path where to save result')
 
     # visualization options
-    parser.add_argument('--plot_pred', default=True, type=bool, help="plot predicted floorplan")
-    parser.add_argument('--plot_density', default=True, type=bool, help="plot predicited room polygons overlaid on the density map")
-    parser.add_argument('--plot_gt', default=True, type=bool, help="plot ground truth floorplan")
+    parser.add_argument('--plot_pred', default=True, type=str2bool, help="plot predicted floorplan")
+    parser.add_argument('--plot_density', default=True, type=str2bool, help="plot predicited room polygons overlaid on the density map")
+    parser.add_argument('--plot_gt', default=True, type=str2bool, help="plot ground truth floorplan")
 
 
     return parser
