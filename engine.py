@@ -210,6 +210,9 @@ def evaluate_floor(model, dataset_name, data_loader, device, output_dir, plot_pr
     
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
+    prediction_dir = os.path.join(output_dir, "predictions")
+    if semantic_rich and not os.path.exists(prediction_dir):
+        os.mkdir(prediction_dir)
 
     for batched_inputs in data_loader:
 
@@ -306,6 +309,21 @@ def evaluate_floor(model, dataset_name, data_loader, device, output_dir, plot_pr
                         elif len(corners)==2:
                             window_doors.append(corners)
                             window_doors_types.append(pred_room_label_per_scene[j])
+
+            if semantic_rich:
+                pred_record = {
+                    "scene_id": int(scene_ids[i]),
+                    "room_polys": [poly.tolist() for poly in room_polys],
+                    "room_types": [int(room_type) for room_type in room_types],
+                    "window_doors": [line.tolist() for line in window_doors],
+                    "window_doors_types": [
+                        int(window_door_type) for window_door_type in window_doors_types
+                    ],
+                }
+                with open(
+                    os.path.join(prediction_dir, f"{int(scene_ids[i]):05d}.json"), "w"
+                ) as f:
+                    json.dump(pred_record, f)
 
 
             if dataset_name == 'stru3d':
