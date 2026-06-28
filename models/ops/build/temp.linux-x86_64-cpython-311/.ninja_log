@@ -1,0 +1,4 @@
+# ninja log v7
+1	10001	1782628781765102030	/ssd/zq/coding/SpatialLM/baselines/RoomFormer/models/ops/build/temp.linux-x86_64-cpython-311/ssd/zq/coding/SpatialLM/baselines/RoomFormer/models/ops/src/cpu/ms_deform_attn_cpu.o	bd7911265027c559
+1	21250	1782628781765102030	/ssd/zq/coding/SpatialLM/baselines/RoomFormer/models/ops/build/temp.linux-x86_64-cpython-311/ssd/zq/coding/SpatialLM/baselines/RoomFormer/models/ops/src/cuda/ms_deform_attn_cuda.o	f628279d284422c0
+2	23693	1782628781765102030	/ssd/zq/coding/SpatialLM/baselines/RoomFormer/models/ops/build/temp.linux-x86_64-cpython-311/ssd/zq/coding/SpatialLM/baselines/RoomFormer/models/ops/src/vision.o	f3f9a842af7d63a9
