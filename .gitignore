@@ -3,6 +3,7 @@ __pycache__
 
 checkpoints/
 data/
+s3d_floorplan_eval/montefloor_data
 
 *.o
 *.so
