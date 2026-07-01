@@ -4,7 +4,7 @@ __pycache__
 checkpoints/
 data/
 s3d_floorplan_eval/montefloor_data
-spatiallm_eval
+spatiallm_eval_hfgt
 
 *.o
 *.so
